@@ -52,8 +52,9 @@ jobs:
           echo 'IyEvYmluL3NoCiMKIyBHcmFkbGUgc3RhcnQgdXAgc2NyaXB0IGZvciBVTipYCiMKCiMgRGV0ZXJtaW5lIHRoZSBKYXZhIGNvbW1hbmQgdG8gdXNlIHRvIHN0YXJ0IHRoZSBKVk0uCmlmIFsgLW4gIiRKQVZBX0hPTUUiIF0gOyB0aGVuCiAgICBpZiBbIC14ICIkSkFWQV9IT01FL2pyZS9zaC9qYXZhIiBdIDsgdGhlbgogICAgICAgIEpBVkFDTUQ9IiRKQVZBX0hPTUUvanJlL3NoL2phdmEiCiAgICBlbHNlCiAgICAgICAgSkFWQUNNRD0iJEpBVkFfSE9NRS9iaW4vamF2YSIKICAgIGZpCiAgICBpZiBbICEgLXggIiRKQVZBQ01EIiBdIDsgdGhlbgogICAgICAgIGRpZSAiRVJST1I6IEpBVkFfSE9NRSBpcyBzZXQgdG8gYW4gaW52YWxpZCBkaXJlY3Rvcnk6ICRKQVZBX0hPTUUiCiAgICBmaQplbHNlCiAgICBKQVZBQ01EPSJqYXZhIgogICAgd2hpY2ggamF2YSA+L2Rldi9udWxsIDI+JjEgfHwgZGllICJFUlJPUjogSkFWQV9IT01FIGlzIG5vdCBzZXQgYW5kIG5vICdqYXZhJyBjb21tYW5kIGNvdWxkIGJlIGZvdW5kIGluIHlvdXIgUEFUSC4iCmZpCgojIEVzY2FwZSBhcHBsaWNhdGlvbiBhcmdzCnNhdmUgKCkgewogICAgZm9yIGkgZG8gcHJpbnRmICVzXFxuICIkaSIgfCBzZWQgInMvJy8nXFxcXCcnL2c7MXMvXi8nLztcJHMvXCQvJyBcXFxcLyIgOyBkb25lCiAgICBlY2hvICIgIgp9CgpBUFBfQVJHUz0kKHNhdmUgIiRAIikKCmV4ZWMgIiRKQVZBQ01EIiBcCiAgLWNsYXNzcGF0aCAiJEFQUF9IT01FL2dyYWRsZS93cmFwcGVyL2dyYWRsZS13cmFwcGVyLmphciIgXAogIG9yZy5ncmFkbGUud3JhcHBlci5HcmFkbGVXcmFwcGVyTWFpbiBcCiAgIiRAIgo=' | base64 -d > "gradlew"
           echo 'cm9vdFByb2plY3QubmFtZSA9ICJQREZTdHVkaW8iCmluY2x1ZGUgJzphcHAnCg==' | base64 -d > "settings.gradle"
           chmod +x gradlew
-          curl -sL "https://raw.githubusercontent.com/gradle/gradle/v8.4.0/gradle/wrapper/gradle-wrapper.jar" \
-            -o gradle/wrapper/gradle-wrapper.jar
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
       - name: Build debug APK
         run: ./gradlew assembleDebug --no-daemon --stacktrace
