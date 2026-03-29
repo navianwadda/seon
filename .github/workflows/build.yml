@@ -58,16 +58,6 @@ jobs:
           echo 'cm9vdFByb2plY3QubmFtZSA9ICJQREZTdHVkaW8iCmluY2x1ZGUgJzphcHAnCg==' | base64 -d > "settings.gradle"
           chmod +x gradlew
 
-      - name: Cache Gradle packages
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-
       - name: Build debug APK
         run: ./gradlew assembleDebug --no-daemon --stacktrace
 
