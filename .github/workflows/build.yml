@@ -59,7 +59,7 @@ jobs:
           gradle-version: '8.4'
 
       - name: Build debug APK
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: gradle assembleDebug --no-daemon --stacktrace
 
       - name: Verify APK exists
         run: |
